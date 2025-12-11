@@ -5,19 +5,23 @@ import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import ThemeToggle from '@/components/theme-toggle';
+import LanguageToggle from '@/components/language-toggle';
+import { useLanguage } from '@/components/language-provider';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const navigation = [
-  { name: 'Home', href: '/' },
-  { name: 'Projects', href: '/projects' },
-  { name: 'Skills', href: '/skills' },
-  { name: 'About', href: '/about' },
-  { name: 'Contact', href: '/contact' },
+const navigationKeys = [
+  { key: 'nav.home', href: '/' },
+  { key: 'nav.projects', href: '/projects' },
+  { key: 'nav.skills', href: '/skills' },
+  { key: 'nav.about', href: '/about' },
+  { key: 'nav.contact', href: '/contact' },
+  { key: 'nav.blog', href: '/blog' },
 ];
 
 export default function Header() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { t } = useLanguage();
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg">
@@ -26,7 +30,7 @@ export default function Header() {
           {/* Logo */}
           <div className="flex items-center">
             <Link href="/" className="flex items-center space-x-2">
-              <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 dark:from-blue-400 dark:to-cyan-400 bg-clip-text text-transparent">
+              <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 dark:from-blue-400 dark:to-cyan-400 bg-clip-text text-transparent" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif', letterSpacing: '-0.02em' }}>
                 NetaKong Lab
               </div>
             </Link>
@@ -34,9 +38,9 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex md:items-center md:space-x-6">
-            {navigation.map((item) => (
+            {navigationKeys.map((item) => (
               <Link
-                key={item.name}
+                key={item.key}
                 href={item.href}
                 className={`px-3 py-2 text-sm font-medium rounded-md transition-colors ${
                   pathname === item.href
@@ -44,14 +48,16 @@ export default function Header() {
                     : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800'
                 }`}
               >
-                {item.name}
+                {t(item.key)}
               </Link>
             ))}
+            <LanguageToggle />
             <ThemeToggle />
           </div>
 
           {/* Mobile menu button */}
           <div className="flex items-center space-x-2 md:hidden">
+            <LanguageToggle />
             <ThemeToggle />
             <button
               type="button"
@@ -78,9 +84,9 @@ export default function Header() {
               className="md:hidden overflow-hidden"
             >
               <div className="space-y-1 pb-3 pt-2">
-                {navigation.map((item) => (
+                {navigationKeys.map((item) => (
                   <Link
-                    key={item.name}
+                    key={item.key}
                     href={item.href}
                     className={`block px-3 py-2 text-base font-medium rounded-md ${
                       pathname === item.href
@@ -89,7 +95,7 @@ export default function Header() {
                     }`}
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    {item.name}
+                    {t(item.key)}
                   </Link>
                 ))}
               </div>

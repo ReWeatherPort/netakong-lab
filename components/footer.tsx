@@ -2,10 +2,10 @@ import { Github, Linkedin, Instagram, Mail } from 'lucide-react';
 import Link from 'next/link';
 
 const socialLinks = [
-  { name: 'GitHub', icon: Github, href: 'https://github.com/username' },
-  { name: 'LinkedIn', icon: Linkedin, href: 'https://linkedin.com/in/username' },
-  { name: 'Instagram', icon: Instagram, href: 'https://instagram.com/netakong_nttainment' },
-  { name: 'Email', icon: Mail, href: 'mailto:contact@netakong.lab' },
+  { name: 'GitHub', icon: Github, href: 'https://github.com/ReWeatherPort' },
+  { name: 'LinkedIn', icon: Linkedin, href: 'https://linkedin.com/in/reweatherport' },
+  { name: 'Instagram', icon: Instagram, href: 'https://www.instagram.com/netakong_nttainment/' },
+  { name: 'Email', icon: Mail, href: 'mailto:contact@netakong.com' },
 ];
 
 export default function Footer() {

@@ -8,32 +8,34 @@ import { motion } from 'framer-motion';
 import ProjectCard from '@/components/ui/project-card';
 import { getFeaturedProjects } from '@/data/projects';
 import SectionHeader from '@/components/ui/section-header';
+import { useLanguage } from '@/components/language-provider';
 
-const focusAreas = [
+const focusAreasKeys = [
   {
     icon: TrendingUp,
-    title: 'Polymarket / Crypto Analysis',
-    description: 'Prediction markets, trading strategies, treasury management'
+    titleKey: 'focus.polymarket',
+    descKey: 'focus.polymarket.desc'
   },
   {
     icon: Zap,
-    title: 'Freqtrade / Trading',
-    description: 'Algorithmic trading strategies and automated execution'
+    titleKey: 'focus.trading',
+    descKey: 'focus.trading.desc'
   },
   {
     icon: Database,
-    title: 'Data Science & Kaggle',
-    description: 'ML models, analytics dashboards, competitive data science'
+    titleKey: 'focus.datascience',
+    descKey: 'focus.datascience.desc'
   },
   {
     icon: Code,
-    title: 'Web Development',
-    description: 'Next.js, React, Hugo - building products that ship'
+    titleKey: 'focus.webdev',
+    descKey: 'focus.webdev.desc'
   },
 ];
 
 export default function Home() {
   const featuredProjects = getFeaturedProjects();
+  const { t } = useLanguage();
 
   return (
     <div className="min-h-screen">
@@ -56,11 +58,11 @@ export default function Home() {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 text-sm font-medium"
             >
               <Sparkles className="w-4 h-4" />
-              <span>Welcome to the Lab</span>
+              <span>{t('hero.badge')}</span>
             </motion.div>
 
             {/* Main Heading */}
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-gray-100 leading-tight">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-gray-100 leading-tight" style={{fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif', letterSpacing: '-0.02em'}}>
               <span className="bg-gradient-to-r from-blue-600 to-cyan-600 dark:from-blue-400 dark:to-cyan-400 bg-clip-text text-transparent">
                 NetaKong Lab
               </span>
@@ -68,10 +70,7 @@ export default function Home() {
 
             {/* Tagline */}
             <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              Turning markets, data, and content into{' '}
-              <span className="font-semibold text-blue-600 dark:text-blue-400">
-                experiments that actually ship
-              </span>
+              {t('hero.tagline')}
             </p>
 
             {/* CTA Buttons */}
@@ -85,14 +84,14 @@ export default function Home() {
                 href="/projects"
                 className="group inline-flex items-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                View Projects
+                {t('hero.viewProjects')}
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
                 href="/contact"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 font-semibold rounded-lg border-2 border-gray-300 dark:border-gray-700 hover:border-blue-600 dark:hover:border-blue-400 transition-all duration-300"
               >
-                Work with Me
+                {t('hero.contact')}
               </Link>
             </motion.div>
           </motion.div>
@@ -104,11 +103,11 @@ export default function Home() {
             transition={{ delay: 0.6, duration: 0.8 }}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-20"
           >
-            {focusAreas.map((area, index) => {
+            {focusAreasKeys.map((area, index) => {
               const Icon = area.icon;
               return (
                 <motion.div
-                  key={area.title}
+                  key={area.titleKey}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.8 + index * 0.1, duration: 0.5 }}
@@ -116,10 +115,10 @@ export default function Home() {
                 >
                   <Icon className="w-8 h-8 text-blue-600 dark:text-blue-400 mb-4 group-hover:scale-110 transition-transform" />
                   <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">
-                    {area.title}
+                    {t(area.titleKey)}
                   </h3>
                   <p className="text-sm text-gray-600 dark:text-gray-400">
-                    {area.description}
+                    {t(area.descKey)}
                   </p>
                 </motion.div>
               );
@@ -138,9 +137,9 @@ export default function Home() {
             transition={{ duration: 0.6 }}
           >
             <SectionHeader
-              subtitle="Featured Work"
-              title="Recent Projects"
-              description="A selection of experiments, tools, and products I've built across markets, data, and web."
+              subtitle={t('home.featured.subtitle')}
+              title={t('home.featured.title')}
+              description={t('home.featured.description')}
               className="text-center items-center mb-12"
             />
           </motion.div>
@@ -180,10 +179,10 @@ export default function Home() {
             className="text-center space-y-6"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100">
-              Follow the Journey
+              {t('home.instagram.title')}
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Behind-the-scenes content, market insights, and creative experiments on Instagram
+              {t('home.instagram.description')}
             </p>
             <a
               href="https://instagram.com/netakong_nttainment"

@@ -12,8 +12,8 @@ export const projects: Project[] = [
     status: 'Live',
     timeline: '2024 - Present',
     links: {
-      github: 'https://github.com/username/polymarket-ai-lab',
-      live: 'https://polymarket-ai-lab.netlify.app'
+      github: 'https://github.com/ReWeatherPort/polymarket-ai-lab',
+      live: 'https://reweatherport.github.io/polymarket-ai-lab/'
     },
     featured: true
   },
@@ -28,10 +28,10 @@ export const projects: Project[] = [
     status: 'Live',
     timeline: '2024',
     links: {
-      github: 'https://github.com/username/hk-job-worth-calculator',
-      live: 'https://hk-job-calculator.vercel.app'
+      github: 'https://github.com/ReWeatherPort/hk-job-worth-calculator',
+      live: 'https://reweatherport.github.io/hk-job-worth-calculator/'
     },
-    featured: true
+    featured: false
   },
   {
     id: '3',
@@ -68,14 +68,14 @@ export const projects: Project[] = [
     id: '5',
     title: 'netakong_nttainment',
     slug: 'netakong-nttainment',
-    description: 'Instagram content brand combining entertainment, finance insights, and creative storytelling.',
-    longDescription: 'Multi-format content platform exploring markets, tech, and culture through engaging visual narratives and data-driven stories.',
-    techStack: ['Instagram', 'Content Strategy', 'Design'],
-    tags: ['content', 'social-media', 'design'],
+    description: '探索隱藏景點｜平靚正美食｜行山⛰️ 旅行故事✨ - Travel, food, and hiking adventures across Japan, Taiwan, and Hong Kong.',
+    longDescription: '🐾🦙 by 六點港 NetaKong x BaBuTuTu - Personal blog sharing hidden gems, budget-friendly food spots, hiking trails, and travel stories with real reviews, transportation tips, and budget guides. Weekly Reels to help you plan your next adventure!',
+    techStack: ['Instagram', 'Content Creation', 'Photography', 'Travel'],
+    tags: ['content', 'social-media', 'design', 'travel'],
     status: 'Live',
     timeline: '2024 - Present',
     links: {
-      live: 'https://instagram.com/netakong_nttainment'
+      live: 'https://www.instagram.com/netakong_nttainment/'
     },
     featured: true
   },
@@ -116,9 +116,9 @@ export const projects: Project[] = [
     status: 'Live',
     timeline: '2022 - Present',
     links: {
-      live: 'https://kaggle.com/username'
+      live: 'https://kaggle.com/reweatherport'
     },
-    featured: false
+    featured: true
   },
   {
     id: '9',

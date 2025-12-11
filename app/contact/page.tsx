@@ -12,25 +12,25 @@ const socialLinks = [
   {
     name: 'GitHub',
     icon: Github,
-    href: 'https://github.com/username',
+    href: 'https://github.com/ReWeatherPort',
     color: 'hover:text-gray-900 dark:hover:text-white'
   },
   {
     name: 'LinkedIn',
     icon: Linkedin,
-    href: 'https://linkedin.com/in/username',
+    href: 'https://linkedin.com/in/reweatherport',
     color: 'hover:text-blue-600'
   },
   {
     name: 'Instagram',
     icon: Instagram,
-    href: 'https://instagram.com/netakong_nttainment',
+    href: 'https://www.instagram.com/netakong_nttainment/',
     color: 'hover:text-pink-600'
   },
   {
     name: 'Email',
     icon: Mail,
-    href: 'mailto:contact@netakong.lab',
+    href: 'mailto:contact@netakong.com',
     color: 'hover:text-blue-600'
   }
 ];
