@@ -10,8 +10,10 @@ import Tag from '@/components/ui/tag';
 import SectionHeader from '@/components/ui/section-header';
 import { projects, getAllTags, filterProjects } from '@/data/projects';
 import { ProjectStatus } from '@/lib/types';
+import { useLanguage } from '@/components/language-provider';
 
 export default function ProjectsPage() {
+  const { t } = useLanguage();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [statusFilter, setStatusFilter] = useState<ProjectStatus | undefined>(undefined);
@@ -59,9 +61,9 @@ export default function ProjectsPage() {
           transition={{ duration: 0.6 }}
         >
           <SectionHeader
-            subtitle="Portfolio"
-            title="All Projects"
-            description="A comprehensive collection of experiments, tools, and products across markets, data science, and web development."
+            subtitle={t('projects.subtitle')}
+            title={t('projects.title')}
+            description={t('projects.desc')}
             className="mb-12"
           />
         </motion.div>
@@ -78,7 +80,7 @@ export default function ProjectsPage() {
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
             <input
               type="text"
-              placeholder="Search projects..."
+              placeholder={t('projects.search')}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full pl-10 pr-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 dark:text-gray-100"
@@ -90,50 +92,50 @@ export default function ProjectsPage() {
             <div className="flex flex-wrap gap-2">
               <span className="text-sm font-medium text-gray-700 dark:text-gray-300 flex items-center gap-2">
                 <Filter className="w-4 h-4" />
-                Status:
+                {t('projects.status')}
               </span>
               <Tag
                 variant={statusFilter === undefined ? 'default' : 'outline'}
                 interactive
                 onClick={() => setStatusFilter(undefined)}
               >
-                All
+                {t('projects.all')}
               </Tag>
               <Tag
                 variant={statusFilter === 'Live' ? 'success' : 'outline'}
                 interactive
                 onClick={() => setStatusFilter('Live')}
               >
-                Live
+                {t('projects.live')}
               </Tag>
               <Tag
                 variant={statusFilter === 'WIP' ? 'warning' : 'outline'}
                 interactive
                 onClick={() => setStatusFilter('WIP')}
               >
-                WIP
+                {t('projects.wip')}
               </Tag>
               <Tag
                 variant={statusFilter === 'Idea' ? 'secondary' : 'outline'}
                 interactive
                 onClick={() => setStatusFilter('Idea')}
               >
-                Idea
+                {t('projects.idea')}
               </Tag>
             </div>
 
             <div className="flex items-center gap-2">
               <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                Sort by:
+                {t('projects.sort')}
               </span>
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value as any)}
                 className="px-3 py-2 bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 dark:text-gray-100"
               >
-                <option value="featured">Featured First</option>
-                <option value="newest">Newest</option>
-                <option value="name">Name (A-Z)</option>
+                <option value="featured">{t('projects.featured')}</option>
+                <option value="newest">{t('projects.newest')}</option>
+                <option value="name">{t('projects.name')}</option>
               </select>
             </div>
           </div>
@@ -142,14 +144,14 @@ export default function ProjectsPage() {
           <div className="space-y-3">
             <div className="flex items-center justify-between">
               <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                Filter by tags:
+                {t('projects.filter')}
               </span>
               {selectedTags.length > 0 && (
                 <button
                   onClick={() => setSelectedTags([])}
                   className="text-sm text-blue-600 dark:text-blue-400 hover:underline"
                 >
-                  Clear all ({selectedTags.length})
+                  {t('projects.clear')} ({selectedTags.length})
                 </button>
               )}
             </div>
@@ -170,7 +172,7 @@ export default function ProjectsPage() {
 
         {/* Results Count */}
         <div className="mb-6 text-sm text-gray-600 dark:text-gray-400">
-          Showing {filteredAndSortedProjects.length} of {projects.length} projects
+          {t('projects.showing')} {filteredAndSortedProjects.length} {t('projects.of')} {projects.length} {t('projects.results')}
         </div>
 
         {/* Projects Grid */}
@@ -187,7 +189,7 @@ export default function ProjectsPage() {
             className="text-center py-20"
           >
             <p className="text-xl text-gray-600 dark:text-gray-400">
-              No projects found matching your filters.
+              {t('projects.noResults')}
             </p>
             <button
               onClick={() => {
@@ -197,7 +199,7 @@ export default function ProjectsPage() {
               }}
               className="mt-4 text-blue-600 dark:text-blue-400 hover:underline"
             >
-              Clear all filters
+              {t('projects.clearFilters')}
             </button>
           </motion.div>
         )}

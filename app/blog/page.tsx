@@ -2,53 +2,15 @@
 
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/components/language-provider';
-import { Calendar, Clock, ArrowRight } from 'lucide-react';
+import { Calendar, Clock, ArrowRight, Tag } from 'lucide-react';
 import Link from 'next/link';
+import { getAllBlogPosts } from '@/data/blog-posts';
 
 export const dynamic = 'force-dynamic';
 
-// Blog posts data - you can move this to a separate file later
-const blogPosts = [
-  {
-    id: 1,
-    title: 'Getting Started with Polymarket Analysis',
-    titleZh: '開始使用 Polymarket 分析',
-    excerpt: 'A comprehensive guide to analyzing prediction markets and finding profitable opportunities.',
-    excerptZh: '全面指南：分析預測市場並找到盈利機會。',
-    date: '2024-12-10',
-    readTime: '5 min read',
-    category: 'Trading',
-    categoryZh: '交易',
-    slug: 'polymarket-analysis-guide',
-  },
-  {
-    id: 2,
-    title: 'Building Automated Trading Bots with Freqtrade',
-    titleZh: '使用 Freqtrade 構建自動交易機器人',
-    excerpt: 'Learn how to create, backtest, and deploy algorithmic trading strategies.',
-    excerptZh: '學習如何創建、回測和部署算法交易策略。',
-    date: '2024-12-05',
-    readTime: '8 min read',
-    category: 'Automation',
-    categoryZh: '自動化',
-    slug: 'freqtrade-trading-bots',
-  },
-  {
-    id: 3,
-    title: 'Data Science Tools for Market Analysis',
-    titleZh: '市場分析的數據科學工具',
-    excerpt: 'Essential Python libraries and techniques for analyzing financial data.',
-    excerptZh: '分析金融數據的基本 Python 庫和技術。',
-    date: '2024-11-28',
-    readTime: '6 min read',
-    category: 'Data Science',
-    categoryZh: '數據科學',
-    slug: 'data-science-market-analysis',
-  },
-];
-
 export default function BlogPage() {
   const { t, language } = useLanguage();
+  const blogPosts = getAllBlogPosts();
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
@@ -73,16 +35,16 @@ export default function BlogPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {blogPosts.map((post, index) => (
             <motion.article
-              key={post.id}
+              key={post.slug}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
-              className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-lg transition-shadow duration-300"
+              className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-lg transition-shadow duration-300 group"
             >
               <div className="p-6 space-y-4">
-                {/* Category */}
+                {/* Category & Read Time */}
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wider">
+                  <span className="px-3 py-1 text-xs font-semibold text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/30 rounded-full uppercase tracking-wider">
                     {language === 'en' ? post.category : post.categoryZh}
                   </span>
                   <div className="flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400">
@@ -92,17 +54,27 @@ export default function BlogPage() {
                 </div>
 
                 {/* Title */}
-                <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 line-clamp-2">
+                <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                   {language === 'en' ? post.title : post.titleZh}
                 </h2>
 
                 {/* Excerpt */}
-                <p className="text-gray-600 dark:text-gray-400 line-clamp-3">
+                <p className="text-gray-600 dark:text-gray-400 line-clamp-3 text-sm">
                   {language === 'en' ? post.excerpt : post.excerptZh}
                 </p>
 
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2">
+                  {post.tags.slice(0, 3).map(tag => (
+                    <span key={tag} className="inline-flex items-center gap-1 px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded">
+                      <Tag className="w-3 h-3" />
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
                 {/* Date */}
-                <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+                <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 pt-2 border-t border-gray-200 dark:border-gray-700">
                   <Calendar className="w-4 h-4" />
                   <time dateTime={post.date}>
                     {new Date(post.date).toLocaleDateString(language === 'en' ? 'en-US' : 'zh-TW', {
@@ -116,7 +88,7 @@ export default function BlogPage() {
                 {/* Read More */}
                 <Link
                   href={`/blog/${post.slug}`}
-                  className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 font-semibold hover:underline"
+                  className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 font-semibold hover:gap-3 transition-all"
                 >
                   {language === 'en' ? 'Read more' : '閱讀更多'}
                   <ArrowRight className="w-4 h-4" />

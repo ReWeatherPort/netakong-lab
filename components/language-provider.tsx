@@ -17,8 +17,9 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.projects': 'Projects',
     'nav.skills': 'Skills',
     'nav.about': 'About',
-    'nav.contact': 'Contact',
     'nav.blog': 'Blog',
+    'nav.labNotes': 'Lab Notes',
+    'nav.contact': 'Contact',
     
     // Home
     'hero.badge': 'Shipping Projects, Building Systems',
@@ -98,8 +99,9 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.projects': '專案',
     'nav.skills': '技能',
     'nav.about': '關於',
-    'nav.contact': '聯繫',
     'nav.blog': '部落格',
+    'nav.labNotes': '實驗筆記',
+    'nav.contact': '聯繫',
     
     // Home
     'home.welcome': '歡迎來到實驗室',

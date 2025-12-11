@@ -14,8 +14,9 @@ const navigationKeys = [
   { key: 'nav.projects', href: '/projects' },
   { key: 'nav.skills', href: '/skills' },
   { key: 'nav.about', href: '/about' },
-  { key: 'nav.contact', href: '/contact' },
   { key: 'nav.blog', href: '/blog' },
+  { key: 'nav.labNotes', href: '/lab-notes' },
+  { key: 'nav.contact', href: '/contact' },
 ];
 
 export default function Header() {
@@ -29,10 +30,14 @@ export default function Header() {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <div className="flex items-center">
-            <Link href="/" className="flex items-center space-x-2">
-              <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 dark:from-blue-400 dark:to-cyan-400 bg-clip-text text-transparent" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif', letterSpacing: '-0.02em' }}>
+            <Link 
+              href="/" 
+              className="group flex items-center space-x-2 transition-all duration-300 ease-out hover:scale-105"
+            >
+              <span className="text-2xl font-sf-pro font-semibold text-apple-premium relative">
                 NetaKong Lab
-              </div>
+                <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-cyan-600 dark:from-blue-400 dark:to-cyan-400 group-hover:w-full transition-all duration-300 ease-out"></span>
+              </span>
             </Link>
           </div>
 

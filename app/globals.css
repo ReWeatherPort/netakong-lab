@@ -1,5 +1,24 @@
 @import "tailwindcss";
 
+@theme {
+  /* SF Pro Display font family for Apple-style branding */
+  --font-family-sf-pro: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", system-ui, sans-serif;
+}
+
+/* Apple-style branding utilities */
+.font-sf-pro {
+  font-family: var(--font-family-sf-pro);
+  letter-spacing: -0.022em;
+  font-feature-settings: "kern" 1;
+}
+
+.text-apple-premium {
+  background: linear-gradient(135deg, rgb(59 130 246) 0%, rgb(6 182 212) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
