@@ -1,8 +1,31 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NetaKong Lab
 
-## Getting Started
+A professional personal website showcasing projects and skills in AI automation, Polymarket/crypto analysis, data science, and web development.
 
-First, run the development server:
+![Next.js](https://img.shields.io/badge/Next.js-16-black)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-38bdf8)
+
+## 🚀 Features
+
+- **Modern Tech Stack**: Built with Next.js 16, TypeScript, and Tailwind CSS
+- **Dark/Light Theme**: System preference detection with localStorage persistence
+- **Responsive Design**: Mobile-first approach with smooth animations
+- **Project Gallery**: Filterable, searchable project showcase with tag-based filtering
+- **Skills Matrix**: Organized skill categories with proficiency levels
+- **Contact Form**: Client-side validation and smooth UX
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js 16 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Icons**: Lucide React
+- **Animations**: Framer Motion
+
+## 🚀 Getting Started
+
+First, install dependencies:
 
 ```bash
 npm run dev
