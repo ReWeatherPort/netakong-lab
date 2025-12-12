@@ -32,15 +32,39 @@ export const metadata: Metadata = {
   keywords: ["polymarket", "crypto", "data science", "web development", "trading", "AI"],
   authors: [{ name: "Bryan / Weather" }],
   icons: {
-    icon: '/favicon.svg',
-    apple: '/logo.svg',
+    icon: [
+      { url: '/favicon.ico', sizes: '32x32', type: 'image/x-icon' },
+      { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+    shortcut: '/favicon.ico',
   },
   openGraph: {
     title: "NetaKong Lab",
     description: "Markets, Data & AI Experiments",
     type: "website",
-    images: ['/logo.svg'],
+    url: "https://netakong-lab.vercel.app",
+    siteName: "NetaKong Lab",
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'NetaKong Lab - Markets, Data & AI Experiments',
+      },
+    ],
+    locale: 'en_US',
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'NetaKong Lab',
+    description: 'Markets, Data & AI Experiments',
+    images: ['/og-image.png'],
+    creator: '@netakong',
+  },
+  manifest: '/manifest.json',
 };
 
 export default function RootLayout({
