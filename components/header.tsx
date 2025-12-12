@@ -38,7 +38,7 @@ export default function Header() {
             >
               <div className="relative w-9 h-9 flex-shrink-0">
                 <Image 
-                  src="/logo.svg" 
+                  src="/logo_nt.svg" 
                   alt="NetaKong Lab Icon" 
                   width={36} 
                   height={36}
