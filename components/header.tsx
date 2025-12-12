@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
@@ -33,14 +34,18 @@ export default function Header() {
           <div className="flex items-center">
             <Link 
               href="/" 
-              className="group flex items-center space-x-2 transition-all duration-300 ease-out hover:scale-105"
+              className="group flex items-center gap-3 transition-all duration-300 ease-out hover:scale-105"
             >
-              <span className="text-2xl font-tech text-tech-gradient relative tracking-tight">
+              <Image 
+                src="/netakong.jpg" 
+                alt="NetaKong Lab" 
+                width={40} 
+                height={40}
+                className="rounded-lg shadow-md"
+              />
+              <span className="text-xl font-tech text-tech-gradient tracking-tight relative">
                 NetaKong Lab
                 <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 group-hover:w-full transition-all duration-300 ease-out shadow-lg shadow-cyan-500/50"></span>
-                <span className="absolute inset-0 text-tech-gradient-glow opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  NetaKong Lab
-                </span>
               </span>
             </Link>
           </div>
