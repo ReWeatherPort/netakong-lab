@@ -6,10 +6,15 @@ import { motion } from 'framer-motion';
 import { useLanguage } from '@/components/language-provider';
 import { Calendar, Clock, Tag, ArrowLeft, Share2 } from 'lucide-react';
 import Link from 'next/link';
-import { getBlogPostBySlug, type BlogPost } from '@/data/blog-posts';
+import { getBlogPostBySlug, blogPosts, type BlogPost } from '@/data/blog-posts';
 import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import ReadingProgress from '@/components/reading-progress';
+import TableOfContents from '@/components/table-of-contents';
+import ViewCounter from '@/components/view-counter';
+import RelatedPosts from '@/components/related-posts';
+import GiscusComments from '@/components/giscus-comments';
 
 export default function BlogPostPage() {
   const params = useParams();
@@ -47,7 +52,10 @@ export default function BlogPostPage() {
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900">
-      <article className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-12">
+      <ReadingProgress />
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_250px] gap-12">
+          <article>
         {/* Back Button */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
@@ -186,7 +194,40 @@ export default function BlogPostPage() {
             {content}
           </ReactMarkdown>
         </motion.div>
+
+        {/* View Counter */}
+        <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-800">
+          <ViewCounter slug={post.slug} type="blog" />
+        </div>
+
+        {/* Related Posts */}
+        <RelatedPosts 
+          currentSlug={post.slug}
+          currentTags={post.tags}
+          items={blogPosts}
+          type="blog"
+        />
+
+        {/* Comments */}
+        <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-800">
+          <h2 className="text-2xl font-bold mb-6 font-tech text-tech-gradient">
+            {language === 'zh-TW' ? '評論' : 'Comments'}
+          </h2>
+          <GiscusComments
+            repo="ReWeatherPort/netakong-lab"
+            repoId="YOUR_REPO_ID"
+            category="Blog Comments"
+            categoryId="YOUR_CATEGORY_ID"
+            mapping="pathname"
+            lang={language === 'zh-TW' ? 'zh-TW' : 'en'}
+          />
+        </div>
       </article>
+
+      {/* Table of Contents */}
+      <TableOfContents content={content} />
+        </div>
+      </div>
     </div>
   );
 }

@@ -8,6 +8,7 @@ import ThemeToggle from '@/components/theme-toggle';
 import LanguageToggle from '@/components/language-toggle';
 import { useLanguage } from '@/components/language-provider';
 import { motion, AnimatePresence } from 'framer-motion';
+import SearchBar from '@/components/search-bar';
 
 const navigationKeys = [
   { key: 'nav.home', href: '/' },
@@ -34,15 +35,18 @@ export default function Header() {
               href="/" 
               className="group flex items-center space-x-2 transition-all duration-300 ease-out hover:scale-105"
             >
-              <span className="text-2xl font-sf-pro font-semibold text-apple-premium relative">
+              <span className="text-2xl font-tech text-tech-gradient relative tracking-tight">
                 NetaKong Lab
-                <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-cyan-600 dark:from-blue-400 dark:to-cyan-400 group-hover:w-full transition-all duration-300 ease-out"></span>
+                <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 group-hover:w-full transition-all duration-300 ease-out shadow-lg shadow-cyan-500/50"></span>
+                <span className="absolute inset-0 text-tech-gradient-glow opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  NetaKong Lab
+                </span>
               </span>
             </Link>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex md:items-center md:space-x-6">
+          <div className="hidden md:flex md:items-center md:space-x-4">
             {navigationKeys.map((item) => (
               <Link
                 key={item.key}
@@ -56,6 +60,7 @@ export default function Header() {
                 {t(item.key)}
               </Link>
             ))}
+            <SearchBar />
             <LanguageToggle />
             <ThemeToggle />
           </div>

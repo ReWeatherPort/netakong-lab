@@ -6,10 +6,15 @@ import { motion } from 'framer-motion';
 import { useLanguage } from '@/components/language-provider';
 import { Calendar, Clock, Tag, ArrowLeft, Share2, Beaker, Lightbulb, BookOpen, TrendingUp } from 'lucide-react';
 import Link from 'next/link';
-import { getLabNoteBySlug, type LabNote } from '@/data/lab-notes';
+import { getLabNoteBySlug, labNotes, type LabNote } from '@/data/lab-notes';
 import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import ReadingProgress from '@/components/reading-progress';
+import TableOfContents from '@/components/table-of-contents';
+import ViewCounter from '@/components/view-counter';
+import RelatedPosts from '@/components/related-posts';
+import GiscusComments from '@/components/giscus-comments';
 
 const typeIcons = {
   experiment: Beaker,
@@ -70,7 +75,10 @@ export default function LabNotePage() {
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900">
-      <article className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-12">
+      <ReadingProgress />
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_250px] gap-12">
+          <article>
         {/* Back Button */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
@@ -205,7 +213,40 @@ export default function LabNotePage() {
             {content}
           </ReactMarkdown>
         </motion.div>
+
+        {/* View Counter */}
+        <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-800">
+          <ViewCounter slug={note.slug} type="lab-note" />
+        </div>
+
+        {/* Related Notes */}
+        <RelatedPosts 
+          currentSlug={note.slug}
+          currentTags={note.tags}
+          items={labNotes}
+          type="lab-note"
+        />
+
+        {/* Comments */}
+        <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-800">
+          <h2 className="text-2xl font-bold mb-6 font-tech text-tech-gradient">
+            {language === 'zh-TW' ? '評論' : 'Comments'}
+          </h2>
+          <GiscusComments
+            repo="ReWeatherPort/netakong-lab"
+            repoId="YOUR_REPO_ID"
+            category="Lab Notes Comments"
+            categoryId="YOUR_CATEGORY_ID"
+            mapping="pathname"
+            lang={language === 'zh-TW' ? 'zh-TW' : 'en'}
+          />
+        </div>
       </article>
+
+      {/* Table of Contents */}
+      <TableOfContents content={content} />
+        </div>
+      </div>
     </div>
   );
 }
