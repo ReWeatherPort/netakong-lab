@@ -38,11 +38,11 @@ export default function Header() {
             >
               <div className="relative w-9 h-9 flex-shrink-0">
                 <Image 
-                  src="/netakong.jpg" 
+                  src="/logo.svg" 
                   alt="NetaKong Lab Icon" 
                   width={36} 
                   height={36}
-                  className="rounded-lg shadow-md"
+                  className="rounded-lg"
                   priority
                 />
               </div>
