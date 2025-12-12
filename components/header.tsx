@@ -34,15 +34,18 @@ export default function Header() {
           <div className="flex items-center">
             <Link 
               href="/" 
-              className="group flex items-center gap-3 transition-all duration-300 ease-out hover:scale-105"
+              className="group flex items-center gap-2.5 transition-all duration-300 ease-out hover:scale-105"
             >
-              <Image 
-                src="/netakong.jpg" 
-                alt="NetaKong Lab" 
-                width={40} 
-                height={40}
-                className="rounded-lg shadow-md"
-              />
+              <div className="relative w-9 h-9 flex-shrink-0">
+                <Image 
+                  src="/netakong.jpg" 
+                  alt="NetaKong Lab Icon" 
+                  width={36} 
+                  height={36}
+                  className="rounded-lg shadow-md"
+                  priority
+                />
+              </div>
               <span className="text-xl font-tech text-tech-gradient tracking-tight relative">
                 NetaKong Lab
                 <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 group-hover:w-full transition-all duration-300 ease-out shadow-lg shadow-cyan-500/50"></span>
