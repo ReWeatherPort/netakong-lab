@@ -62,8 +62,8 @@ export default function Home() {
             </motion.div>
 
             {/* Main Heading */}
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-gray-100 leading-tight" style={{fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif', letterSpacing: '-0.02em'}}>
-              <span className="bg-gradient-to-r from-blue-600 to-cyan-600 dark:from-blue-400 dark:to-cyan-400 bg-clip-text text-transparent">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight tracking-tight" style={{fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif', fontWeight: '700', letterSpacing: '-0.04em'}}>
+              <span className="bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600 dark:from-blue-400 dark:via-cyan-300 dark:to-blue-400 bg-clip-text text-transparent animate-gradient">
                 NetaKong Lab
               </span>
             </h1>
